@@ -1,0 +1,63 @@
+# Common files/directories (across projects)
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+*.swp
+*.log
+*.pyc
+*.class
+
+# IntelliJ IDEA (both frontend and backend)
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Flutter (frontend)
+frontend/doc/api/
+frontend/ios/Flutter/.last_build_id
+frontend/.dart_tool/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/.pub-cache/
+frontend/.pub/
+frontend/build/
+frontend/app.*.symbols
+frontend/app.*.map.json
+frontend/android/app/debug
+frontend/android/app/profile
+frontend/android/app/release
+
+# Kotlin Spring Boot (backend)
+backend/.gradle
+backend/build/
+!backend/gradle/wrapper/gradle-wrapper.jar
+!backend/**/src/main/**/build/  # Important: Keep these!
+!backend/**/src/test/**/build/  # Important: Keep these!
+backend/.kotlin
+backend/out/
+!backend/**/src/main/**/out/ # Important: Keep these!
+!backend/**/src/test/**/out/ # Important: Keep these!
+backend/.apt_generated
+backend/.classpath
+backend/.factorypath
+backend/.project
+backend/.settings
+backend/.springBeans
+backend/.sts4-cache
+backend/bin/
+backend/nbproject/private/
+backend/nbbuild/
+backend/dist/
+backend/nbdist/
+backend/.nb-gradle/
+backend/gradle/wrapper/gradle-wrapper.jar  # This should *not* be ignored
+migrate_working_dir/
+
+*.env  # Environment files
+config/secrets.properties # Example
+.keystore # Example
