@@ -10,8 +10,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
-    implementation("org.springframework.boot:spring-boot-starter-web:3.1.0")
+    implementation("org.springframework.boot:spring-boot-starter-web:3.4.2")
+    implementation("org.springframework.boot:spring-boot-starter-webflux:3.4.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }
 
 tasks.test {
