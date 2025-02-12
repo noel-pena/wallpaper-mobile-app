@@ -1,5 +1,9 @@
 plugins {
     kotlin("jvm") version "2.0.21"
+    id("org.springframework.boot") version "3.4.2"
+    id("io.spring.dependency-management") version "1.1.0"
+    kotlin("plugin.spring") version "1.9.20"
+    kotlin("plugin.serialization") version "1.9.20"
 }
 
 group = "org.example"
