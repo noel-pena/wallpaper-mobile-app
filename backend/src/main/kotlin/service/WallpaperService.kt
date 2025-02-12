@@ -8,6 +8,8 @@ import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.bodyToMono
 import reactor.core.publisher.Mono
 
+// TODO: Path URL uses an ID in the following format: "https://w.wallhaven.cc/full/[first two index of id]/wallhaven-[id].jpg"
+
 @Service
 class WallpaperService(private val webClient: WebClient) {
 
