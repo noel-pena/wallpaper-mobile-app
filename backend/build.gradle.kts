@@ -6,7 +6,7 @@ plugins {
     kotlin("plugin.serialization") version "1.9.20"
 }
 
-group = "org.example"
+group = "wallpaper"
 version = "1.0-SNAPSHOT"
 
 repositories {

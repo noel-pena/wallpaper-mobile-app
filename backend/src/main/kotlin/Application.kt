@@ -1,4 +1,4 @@
-package org.example
+package wallpaper
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

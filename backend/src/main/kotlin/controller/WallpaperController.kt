@@ -1,7 +1,7 @@
-package org.example.controller
+package wallpaper.controller
 
-import org.example.model.WallpaperData
-import org.example.service.WallpaperService
+import wallpaper.model.WallpaperData
+import wallpaper.service.WallpaperService
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono

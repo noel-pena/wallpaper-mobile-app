@@ -1,11 +1,9 @@
-package org.example.service
+package wallpaper.service
 
 import kotlinx.serialization.json.Json
-import org.example.model.*
-import org.example.model.WallpaperData
+import wallpaper.model.*
 import org.springframework.stereotype.Service
-import org.springframework.web.reactive.function.client.WebClient
-import org.springframework.web.reactive.function.client.bodyToMono
+import org.springframework.web.reactive.function.client.*
 import reactor.core.publisher.Mono
 
 private val json = Json {
