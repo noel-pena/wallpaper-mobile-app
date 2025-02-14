@@ -8,7 +8,9 @@ import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.bodyToMono
 import reactor.core.publisher.Mono
 
-// TODO: Path URL uses an ID in the following format: "https://w.wallhaven.cc/full/[first two index of id]/wallhaven-[id].jpg"
+private val json = Json {
+    ignoreUnknownKeys = true
+}
 
 @Service
 class WallpaperService(private val webClient: WebClient) {
@@ -22,7 +24,7 @@ class WallpaperService(private val webClient: WebClient) {
             .bodyToMono<String>()
             .mapNotNull { jsongString ->
                 try {
-                    val response = Json{ ignoreUnknownKeys = true }.decodeFromString<SearchResponse>(jsongString)
+                    val response = json.decodeFromString<SearchResponse>(jsongString)
                     response.data.firstOrNull()?.toWallpaper()
                 } catch (e: Exception) {
                     println("Error decoding JSON: ${e.message}")
@@ -31,11 +33,9 @@ class WallpaperService(private val webClient: WebClient) {
             }
             .onErrorResume { e ->
                 println("Error fetching Wallpaper: ${e.message}")
-                Mono.just(null)
+                Mono.justOrEmpty(null)
             }
     }
 
-    private fun WallhavenWallpaperData.toWallpaper(): WallpaperData =
-        WallpaperData(path)
-
+    private fun WallpaperData.toWallpaper(): WallpaperData = WallpaperData(path)
 }

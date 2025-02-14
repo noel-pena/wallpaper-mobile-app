@@ -17,6 +17,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:3.4.2")
     implementation("org.springframework.boot:spring-boot-starter-webflux:3.4.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("io.netty:netty-resolver-dns-native-macos:4.1.99.Final")
 }
 
 tasks.test {
