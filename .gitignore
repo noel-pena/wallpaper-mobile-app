@@ -36,12 +36,12 @@ frontend/android/app/release
 backend/.gradle
 backend/build/
 !backend/gradle/wrapper/gradle-wrapper.jar
-!backend/**/src/main/**/build/  # Important: Keep these!
-!backend/**/src/test/**/build/  # Important: Keep these!
+!backend/**/src/main/**/build/
+!backend/**/src/test/**/build/
 backend/.kotlin
 backend/out/
-!backend/**/src/main/**/out/ # Important: Keep these!
-!backend/**/src/test/**/out/ # Important: Keep these!
+!backend/**/src/main/**/out/
+!backend/**/src/test/**/out/
 backend/.apt_generated
 backend/.classpath
 backend/.factorypath
@@ -55,9 +55,9 @@ backend/nbbuild/
 backend/dist/
 backend/nbdist/
 backend/.nb-gradle/
-backend/gradle/wrapper/gradle-wrapper.jar  # This should *not* be ignored
+backend/gradle/wrapper/gradle-wrapper.jar
 migrate_working_dir/
 
-*.env  # Environment files
-config/secrets.properties # Example
-.keystore # Example
+.env
+config/secrets.properties
+.keystore
