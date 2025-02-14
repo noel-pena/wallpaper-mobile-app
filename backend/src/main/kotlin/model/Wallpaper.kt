@@ -11,18 +11,12 @@ data class Thumbs(
 
 @Serializable
 data class WallpaperData(
-    val id: String,
-    val url: String,
     val path: String,
-    val thumbs: Thumbs
 )
 
 @Serializable
 data class WallhavenWallpaperData(
-    val id: String,
-    val url: String,
     val path: String,
-    val thumbs: Thumbs
 )
 
 @Serializable

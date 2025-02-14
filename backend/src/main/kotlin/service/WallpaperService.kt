@@ -22,7 +22,7 @@ class WallpaperService(private val webClient: WebClient) {
             .bodyToMono<String>()
             .mapNotNull { jsongString ->
                 try {
-                    val response = Json{ ignoreUnknownKeys = true; isLenient = true }.decodeFromString<SearchResponse>(jsongString)
+                    val response = Json{ ignoreUnknownKeys = true }.decodeFromString<SearchResponse>(jsongString)
                     response.data.firstOrNull()?.toWallpaper()
                 } catch (e: Exception) {
                     println("Error decoding JSON: ${e.message}")
@@ -36,6 +36,6 @@ class WallpaperService(private val webClient: WebClient) {
     }
 
     private fun WallhavenWallpaperData.toWallpaper(): WallpaperData =
-        WallpaperData(id, url, path, thumbs)
+        WallpaperData(path)
 
 }
