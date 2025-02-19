@@ -19,6 +19,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("io.netty:netty-resolver-dns-native-macos:4.1.99.Final")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+    testImplementation("org.mockito:mockito-core:5.0.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:5.0.0")
+    testImplementation("com.squareup.okhttp3:okhttp-mockwebserver:4.11.0")
+    testImplementation("com.squareup.okhttp3:okhttp:4.11.0")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(group = "org.junit", module = "junit")
 }
 
 tasks.test {
@@ -27,4 +35,12 @@ tasks.test {
 
 kotlin {
     jvmToolchain(21)
+    compilerOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+}
 }
