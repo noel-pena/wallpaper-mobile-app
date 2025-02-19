@@ -12,8 +12,9 @@ class WallpaperController(private val wallpaperService: WallpaperService) {
 
     @GetMapping("/random", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getRandomWallpaper(
-        @RequestHeader("X-API-Key", required = false) apiKey: String?
+        @RequestHeader("X-API-Key", required = false) apiKey: String?,
+        @RequestParam("resolutions", required = false) resolutions: String?
     ): Mono<WallpaperData?> {
-        return wallpaperService.getRandomWallpaper(apiKey)
+        return wallpaperService.getRandomWallpaper(apiKey, resolutions)
     }
 }

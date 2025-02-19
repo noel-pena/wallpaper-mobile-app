@@ -13,8 +13,25 @@ private val json = Json {
 @Service
 class WallpaperService(private val webClient: WebClient) {
 
-    fun getRandomWallpaper(apiKey: String? = null): Mono<WallpaperData?> {
-        val url = "https://wallhaven.cc/api/v1/search?sorting=random" + if (apiKey != null) "?apiKey=$apiKey" else ""
+    fun getRandomWallpaper(
+        apiKey: String? = null,
+        resolutions: String? = null
+    ): Mono<WallpaperData?> {
+        val baseUrl = "https://wallhaven.cc/api/v1/search?sorting=random"
+        val url = buildString {
+            append(baseUrl)
+            if (apiKey != null) {
+                append("&apikey=$apiKey")
+            }
+            if (resolutions != null) {
+                val parts = resolutions.split("x")
+                if (parts.size == 2) {
+                    append("&resolutions=$resolutions")
+                } else if (resolutions.contains(":")) {
+                    append("&rations=$resolutions")
+                }
+            }
+        }
 
         return webClient.get()
             .uri(url)
