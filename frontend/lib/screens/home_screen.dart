@@ -7,17 +7,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Center(child:
+          title:
           TextButton(
             onPressed: (){},
             style: TextButton.styleFrom(
               textStyle: TextStyle(
-                color: Color((0xFF66666E)),
                 fontSize: 24
               )
             ),
             child: Text("azar"),
-          )),
+          ),
       backgroundColor: Color(0xFF2A2A2A),
       ),
       body: Stack(

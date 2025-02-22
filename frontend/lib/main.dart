@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Wallpaper App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        scaffoldBackgroundColor: const Color(0XFFF4F4F6),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF66666E)),
         useMaterial3: true,
       ),
       home: HomeScreen()
