@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Wallpaper App',
+      title: 'azar',
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0XFFF4F4F6),
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF66666E)),

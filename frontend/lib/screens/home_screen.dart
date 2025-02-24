@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../widgets/custom_app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -6,19 +8,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title:
-          TextButton(
-            onPressed: (){},
-            style: TextButton.styleFrom(
-              textStyle: TextStyle(
-                fontSize: 24
-              )
-            ),
-            child: Text("azar"),
-          ),
-      backgroundColor: Color(0xFF2A2A2A),
-      ),
+      appBar: CustomAppBar(
+      onLogoPressed: () {
+        if (kDebugMode) {
+          print('app bar logo pressed');
+        }
+      },
+    ),
       body: Stack(
         children: [Center(
           child: TextButton.icon(
