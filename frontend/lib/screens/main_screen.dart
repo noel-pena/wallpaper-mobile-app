@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/home_screen.dart';
-import 'package:frontend/screens/randomizer_screen.dart';
+import 'package:frontend/screens/favorites_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -14,7 +14,7 @@ class MainScreenState extends State<MainScreen> {
 
   final List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    RandomizerScreen(),
+    FavoritesScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -37,13 +37,13 @@ class MainScreenState extends State<MainScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.photo_album),
-              label: 'Randomizer',
+              icon: Icon(Icons.star),
+              label: 'Favorites',
           )
         ],
         backgroundColor: Color(0xFFE6E6E9),
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.indigo,
+        selectedItemColor: Color(0xFFA38EB8),
         onTap: _onItemTapped,
       ),
     );
