@@ -31,7 +31,7 @@ class _HomeScreen extends State<HomeScreen> {
               color: Colors.black26,
             )
               .animate().rotate(
-                duration: const Duration(seconds: 1),
+                duration: const Duration(milliseconds: 500),
                 curve: Curves.linear,
               )
           )],
