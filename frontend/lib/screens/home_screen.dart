@@ -23,18 +23,30 @@ class _HomeScreen extends State<HomeScreen> {
       ),
       body: Stack(
         children: [
+          Placeholder(),
           Align(
-            alignment: Alignment(0, 0.8),
-            child: Icon(
-              Icons.replay_circle_filled,
-              size: 50,
+            alignment: Alignment(-0.25, 0.75),
+            child: IconButton(
+              iconSize: 50,
+              onPressed: (){},
               color: Colors.black26,
+              icon: const Icon(Icons.replay_circle_filled),
             )
               .animate().rotate(
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.linear,
               )
-          )],
+          ),
+          Align(
+            alignment: Alignment(0.25, 0.75),
+            child: IconButton(
+              iconSize: 50,
+              onPressed: (){},
+              color: Colors.redAccent,
+              icon: const Icon(Icons.favorite),
+            )
+          )
+        ],
       ),
     );
   }
