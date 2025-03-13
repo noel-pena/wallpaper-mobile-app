@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/screens/favorites_screen.dart';
+import 'package:frontend/widgets/custom_app_bar.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -26,6 +27,13 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        onLogoPressed: () {
+          setState(() {
+            _selectedIndex = 0;
+          });
+        },
+      ),
       body: IndexedStack(
         index: _selectedIndex,
         children: _widgetOptions,

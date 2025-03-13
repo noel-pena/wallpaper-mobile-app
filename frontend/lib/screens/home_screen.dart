@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../widgets/custom_app_bar.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,13 +12,6 @@ class _HomeScreen extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        onLogoPressed: () {
-          if (kDebugMode) {
-            print('app bar logo pressed');
-          }
-        },
-      ),
       body: Stack(
         children: [
           Placeholder(),
