@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'dart:math' as math;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,16 +14,7 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-        vsync: this,
-        duration: const Duration(seconds: 1),
-    );
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
+    _animationController = AnimationController(vsync: this);
   }
 
   @override
@@ -35,16 +25,16 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
           const Placeholder(),
           Align(
             alignment: const Alignment(-0.25, 0.75),
-              child: IconButton(
-                iconSize: 50,
-                onPressed: () {
-                  _animationController
-                    ..reset()
-                    ..forward();
-                },
-                color: Colors.black26,
-                icon: const Icon(Icons.replay_circle_filled),
-              ).animate(controller: _animationController, autoPlay: false).rotate(begin: 0, end: 4 * math.pi),
+            child: IconButton(
+              iconSize: 50,
+              onPressed: () {
+                _animationController
+                  ..reset()
+                  ..forward();
+              },
+              color: Colors.black26,
+              icon: const Icon(Icons.replay_circle_filled),
+            ).animate(controller: _animationController, autoPlay: false).rotate(begin: 0, end: -2, duration: Duration(seconds: 1)),
           ),
           Align(
             alignment: Alignment(0.25, 0.75),
