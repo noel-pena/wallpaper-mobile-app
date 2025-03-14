@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,12 +10,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
+  static const address = 'http://localhost:8080/api/wallpapers/random';
   late AnimationController _animationController;
 
   @override
   void initState() {
     super.initState();
+    _fetchWallpaper();
     _animationController = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -48,5 +57,11 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
         ],
       ),
     );
+  }
+
+  Future _fetchWallpaper() async {
+    final Uri url = Uri.parse(address);
+    final response = await http.get(url);
+    print(response.body);
   }
 }
