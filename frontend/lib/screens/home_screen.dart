@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
   static const address = 'http://localhost:8080/api/wallpapers/random';
   late AnimationController _animationController;
+  bool isLiked = false;
 
   @override
   void initState() {
@@ -49,8 +50,12 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin{
             alignment: Alignment(0.25, 0.75),
             child: IconButton(
               iconSize: 50,
-              onPressed: (){},
-              color: Colors.redAccent,
+              onPressed: (){
+                setState(() {
+                  isLiked = !isLiked;
+                });
+              },
+              color: isLiked ? Colors.redAccent : null,
               icon: const Icon(Icons.favorite),
             )
           )
