@@ -16,7 +16,7 @@ class WallpaperService(private val webClient: WebClient) {
     fun getRandomWallpaper(
         apiKey: String? = null,
         resolutions: String? = null
-    ): Mono<WallpaperData?> {
+    ): Mono<String?> {
         val baseUrl = "https://wallhaven.cc/api/v1/search?sorting=random"
         val url = buildString {
             append(baseUrl)
@@ -40,7 +40,7 @@ class WallpaperService(private val webClient: WebClient) {
             .mapNotNull { jsongString ->
                 try {
                     val response = json.decodeFromString<SearchResponse>(jsongString)
-                    response.data.firstOrNull()?.toWallpaper()
+                    response.data.firstOrNull()?.toWallpaper()?.path
                 } catch (e: Exception) {
                     println("Error decoding JSON: ${e.message}")
                     null

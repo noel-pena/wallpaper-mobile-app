@@ -28,7 +28,6 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin 
       setState(() {
         _wallpaperData = data;
       });
-      print("aqui $_wallpaperData");
     } catch (error) {
       throw('Error: $error');
     }
@@ -45,7 +44,12 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin 
     return Scaffold(
       body: Stack(
         children: [
-          const Placeholder(),
+          Align(
+            alignment: const Alignment(0, 0),
+            child: _wallpaperData != null
+            ? Image.network(_wallpaperData!)
+            : const Center(child: CircularProgressIndicator()),
+          ),
           Align(
             alignment: const Alignment(-0.25, 0.75),
             child: IconButton(
