@@ -45,11 +45,11 @@ class MainScreenState extends State<MainScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.star),
+              icon: Icon(Icons.favorite),
               label: 'Favorites',
           )
         ],
-        backgroundColor: Color(0xFFE6E6E9),
+        backgroundColor: Color(0xFFCBCBCB),
         currentIndex: _selectedIndex,
         selectedItemColor: Color(0xFFA38EB8),
         onTap: _onItemTapped,

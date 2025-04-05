@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'azar',
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0XFFF4F4F6),
+        scaffoldBackgroundColor: const Color(0XFFE6E6E6),
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF66666E)),
         useMaterial3: true,
       ),
