@@ -26,33 +26,35 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        onLogoPressed: () {
-          setState(() {
-            _selectedIndex = 0;
-          });
-        },
-      ),
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _widgetOptions,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
+    return SafeArea(
+      child: Scaffold(
+        appBar: CustomAppBar(
+          onLogoPressed: () {
+            setState(() {
+              _selectedIndex = 0;
+            });
+          },
+        ),
+        body: IndexedStack(
+          index: _selectedIndex,
+          children: _widgetOptions,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.favorite),
               label: 'Favorites',
-          )
-        ],
-        backgroundColor: Color(0xFFCBCBCB),
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xFFA38EB8),
-        onTap: _onItemTapped,
+            )
+          ],
+          backgroundColor: Color(0xFFCBCBCB),
+          currentIndex: _selectedIndex,
+          selectedItemColor: Color(0xFFA38EB8),
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }
