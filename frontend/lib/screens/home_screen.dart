@@ -30,7 +30,6 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin 
       setState(() {
         _wallpaperData = data;
       });
-      print(_wallpaperData);
     } catch (error) {
       throw('Error: $error');
     }
@@ -52,10 +51,10 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin 
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(20),
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 1, // Adjust width as needed
-                  height: MediaQuery.of(context).size.height * 1, // Adjust height as needed
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
                   child: _wallpaperData != null
                       ? Image.network(
                     _wallpaperData!,

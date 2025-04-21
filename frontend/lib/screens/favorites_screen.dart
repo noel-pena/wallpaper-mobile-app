@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/widgets/gallery_grid.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -11,7 +12,7 @@ class FavoritesScreen extends StatefulWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Placeholder()
+      body: GalleryGrid()
     );
   }
 }
