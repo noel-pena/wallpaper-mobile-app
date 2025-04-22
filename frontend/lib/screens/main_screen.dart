@@ -11,12 +11,18 @@ class MainScreen extends StatefulWidget {
 }
 
 class MainScreenState extends State<MainScreen> {
+  List<String> savedWallpapers = [];
   int _selectedIndex = 0;
 
-  final List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    FavoritesScreen(),
-  ];
+  void setSavedWallpapers (List<String> newSavedWallpapers) {
+    setState(() {
+      savedWallpapers = newSavedWallpapers;
+    });
+  }
+
+  Widget _buildFavoritesScreen() {
+    return FavoritesScreen(savedWallpapers: savedWallpapers);
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -26,6 +32,15 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> widgetOptions = <Widget>[
+      HomeScreen(onWallpaperSaved: (String url) {
+        if (!savedWallpapers.contains(url)) {
+          setSavedWallpapers([...savedWallpapers, url]);
+        }
+      }),
+      Builder(builder: (context) => _buildFavoritesScreen()),
+    ];
+
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(
@@ -37,7 +52,7 @@ class MainScreenState extends State<MainScreen> {
         ),
         body: IndexedStack(
           index: _selectedIndex,
-          children: _widgetOptions,
+          children: widgetOptions,
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[

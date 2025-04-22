@@ -4,7 +4,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:frontend/services/wallpaper_service.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final Function(String) onWallpaperSaved;
+  const HomeScreen({super.key, required this.onWallpaperSaved});
 
   @override
   State<HomeScreen> createState() => _HomeScreen();
@@ -15,7 +16,6 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin 
   bool isLiked = false;
   final WallpaperService _wallpaperService = WallpaperService();
   String? _wallpaperData;
-  String defaultWallpaper = "https://w.wallhaven.cc/full/nz/wallhaven-nz2lgg.jpg";
 
   @override
   void initState() {
@@ -29,6 +29,7 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin 
       final data = await _wallpaperService.fetchWallpaper();
       setState(() {
         _wallpaperData = data;
+        isLiked = false;
       });
     } catch (error) {
       throw('Error: $error');
@@ -51,7 +52,7 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin 
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(5),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
@@ -130,6 +131,9 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin 
                   onPressed: () {
                     setState(() {
                       isLiked = !isLiked;
+                      if (isLiked && _wallpaperData != null) {
+                        widget.onWallpaperSaved(_wallpaperData!);
+                      }
                     });
                   },
                   color: isLiked ? Colors.redAccent : Colors.black54,
