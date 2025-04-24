@@ -12,7 +12,9 @@ class _FavoritesScreen extends State<FavoritesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GridView.count(
+      body: (widget.savedWallpapers.isEmpty) ?
+      Center(child: Text("Nothing Saved."))
+      : GridView.count(
         padding: const EdgeInsets.all(10),
         crossAxisCount: 3,
         crossAxisSpacing: 5,
