@@ -21,21 +21,42 @@ class _FavoritesScreen extends State<FavoritesScreen> {
         mainAxisSpacing: 5,
         childAspectRatio: 1,
         children: widget.savedWallpapers.map((wallpaperUrl) {
-          return Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: SizedBox(
-                width: 150,
-                height: 150,
-                child: Image.network(
-                  wallpaperUrl,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Center(child: Icon(Icons.error_outline));
-                  },
+          return GestureDetector(
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (_) => Dialog(
+                    backgroundColor: Colors.transparent,
+                    insetPadding: EdgeInsets.zero,
+                    child: Image.network(
+                      wallpaperUrl,
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.fill,
+                    )
+                  )
+              );
+            },
+            child:
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: SizedBox(
+                    width: 150,
+                    height: 150,
+                    child:  Hero(
+                      tag: wallpaperUrl,
+                      child:
+                      Image.network(
+                        wallpaperUrl,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Center(child: Icon(Icons.error_outline));
+                        },
+                      ),
+                    )
+                  ),
                 ),
               ),
-            ),
           );
         }).toList(),
       ),
