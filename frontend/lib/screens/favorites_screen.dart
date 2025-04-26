@@ -30,7 +30,6 @@ class _FavoritesScreen extends State<FavoritesScreen> {
                     insetPadding: EdgeInsets.zero,
                     child: Image.network(
                       wallpaperUrl,
-                      width: MediaQuery.of(context).size.width,
                       fit: BoxFit.fill,
                     )
                   )
