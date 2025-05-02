@@ -13,6 +13,13 @@ class MainScreen extends StatefulWidget {
 class MainScreenState extends State<MainScreen> {
   List<String> savedWallpapers = [];
   int _selectedIndex = 0;
+  late final FavoritesScreen favoritesScreen;
+
+  @override
+  void initState(){
+    super.initState();
+    favoritesScreen = FavoritesScreen(savedWallpapers: savedWallpapers);
+  }
 
   void setSavedWallpapers (List<String> newSavedWallpapers) {
     setState(() {
@@ -50,7 +57,8 @@ class MainScreenState extends State<MainScreen> {
             });
           },
         ),
-        body: IndexedStack(
+        body:
+        IndexedStack(
           index: _selectedIndex,
           children: widgetOptions,
         ),
@@ -67,7 +75,7 @@ class MainScreenState extends State<MainScreen> {
           ],
           backgroundColor: Color(0xFFCBCBCB),
           currentIndex: _selectedIndex,
-          selectedItemColor: Color(0xFFA38EB8),
+          selectedItemColor: Colors.black87,
           onTap: _onItemTapped,
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class FavoritesScreen extends StatefulWidget {
   final List<String> savedWallpapers;
@@ -8,56 +9,69 @@ class FavoritesScreen extends StatefulWidget {
   State<FavoritesScreen> createState() => _FavoritesScreen();
 }
 
-class _FavoritesScreen extends State<FavoritesScreen> {
+class _FavoritesScreen extends State<FavoritesScreen> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Scaffold(
-      body: (widget.savedWallpapers.isEmpty) ?
-      Center(child: Text("Nothing Saved."))
-      : GridView.count(
+      body: widget.savedWallpapers.isEmpty
+          ? const Center(child: Text("Nothing Saved."))
+          : GridView.builder(
         padding: const EdgeInsets.all(10),
-        crossAxisCount: 3,
-        crossAxisSpacing: 5,
-        mainAxisSpacing: 5,
-        childAspectRatio: 1,
-        children: widget.savedWallpapers.map((wallpaperUrl) {
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 5,
+          mainAxisSpacing: 5,
+          childAspectRatio: 1,
+        ),
+        itemCount: widget.savedWallpapers.length,
+        itemBuilder: (BuildContext context, int index) {
+          final wallpaperUrl = widget.savedWallpapers[index];
+
           return GestureDetector(
             onTap: () {
               showDialog(
-                  context: context,
-                  builder: (_) => Dialog(
-                    backgroundColor: Colors.transparent,
-                    insetPadding: EdgeInsets.zero,
-                    child: Image.network(
-                      wallpaperUrl,
-                      fit: BoxFit.fill,
-                    )
-                  )
+                context: context,
+                builder: (_) => Dialog(
+                  backgroundColor: Colors.transparent,
+                  insetPadding: EdgeInsets.zero,
+                  child: CachedNetworkImage(
+                    imageUrl: wallpaperUrl,
+                    fit: BoxFit.fill,
+                    placeholder: (context, url) =>
+                    const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                    const Center(child: Icon(Icons.error_outline)),
+                  ),
+                ),
               );
             },
-            child:
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: SizedBox(
-                    width: 150,
-                    height: 150,
-                    child:  Hero(
-                      tag: wallpaperUrl,
-                      child:
-                      Image.network(
-                        wallpaperUrl,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return const Center(child: Icon(Icons.error_outline));
-                        },
-                      ),
-                    )
+            child: Center(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: SizedBox(
+                  width: 150,
+                  height: 150,
+                  child: Hero(
+                    tag: wallpaperUrl,
+                    child: CachedNetworkImage(
+                      imageUrl: wallpaperUrl,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) =>
+                      const Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) =>
+                      const Center(child: Icon(Icons.error_outline)),
+                    ),
                   ),
                 ),
               ),
+            ),
           );
-        }).toList(),
+        },
       ),
     );
   }
