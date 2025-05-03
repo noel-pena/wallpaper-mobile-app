@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shimmer/shimmer.dart';
 
 class FavoritesScreen extends StatefulWidget {
   final List<String> savedWallpapers;
@@ -62,7 +63,18 @@ class _FavoritesScreen extends State<FavoritesScreen> with AutomaticKeepAliveCli
                       imageUrl: wallpaperUrl,
                       fit: BoxFit.cover,
                       placeholder: (context, url) =>
-                      const Center(child: CircularProgressIndicator()),
+                      Center(
+                        child: Shimmer.fromColors(
+                          direction: ShimmerDirection.ttb,
+                          baseColor: Color(0xFFCBCBCB),
+                          highlightColor: Colors.white54,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                       errorWidget: (context, url, error) =>
                       const Center(child: Icon(Icons.error_outline)),
                     ),

@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:frontend/services/wallpaper_service.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
   final Function(String) onWallpaperSaved;
@@ -66,10 +67,15 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin 
                     loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
                       if (loadingProgress == null) return child;
                       return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                              : null,
+                        child: Shimmer.fromColors(
+                          direction: ShimmerDirection.ttb,
+                          baseColor: Color(0xFFCBCBCB),
+                          highlightColor: Colors.white54,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                            color: Colors.white,
+                          ),
                         ),
                       );
                     },
