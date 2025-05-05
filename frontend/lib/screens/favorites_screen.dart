@@ -17,7 +17,6 @@ class _FavoritesScreen extends State<FavoritesScreen> with AutomaticKeepAliveCli
   @override
   Widget build(BuildContext context) {
     super.build(context);
-
     return Scaffold(
       body: widget.savedWallpapers.isEmpty
           ? const Center(child: Text("Nothing Saved."))
@@ -32,7 +31,6 @@ class _FavoritesScreen extends State<FavoritesScreen> with AutomaticKeepAliveCli
         itemCount: widget.savedWallpapers.length,
         itemBuilder: (BuildContext context, int index) {
           final wallpaperUrl = widget.savedWallpapers[index];
-
           return GestureDetector(
             onTap: () {
               showDialog(
