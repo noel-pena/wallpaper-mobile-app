@@ -14,6 +14,7 @@ dependencies:
   flutter_file_dialog: ^3.0.2
   path_provider: ^2.1.5
   cached_network_image: ^3.2.3
+  image_gallery_saver: ^2.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

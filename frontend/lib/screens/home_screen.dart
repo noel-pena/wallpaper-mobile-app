@@ -55,8 +55,6 @@ class _HomeScreen extends State<HomeScreen> with SingleTickerProviderStateMixin 
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
                   child: _wallpaperData != null
                       ? Image.network(
                     _wallpaperData!,
