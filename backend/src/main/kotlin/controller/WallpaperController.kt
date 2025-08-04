@@ -1,6 +1,5 @@
 package wallpaper.controller
 
-import wallpaper.model.WallpaperData
 import wallpaper.service.WallpaperService
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*

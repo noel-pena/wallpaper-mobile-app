@@ -1,6 +1,4 @@
 import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'dart:io' show Platform;
 
 class WallpaperService {
@@ -8,9 +6,7 @@ class WallpaperService {
     try {
       String address;
 
-      if (kIsWeb) {
-        address = 'http://localhost:8080/api/wallpapers/random';
-      } else if (Platform.isAndroid) {
+      if (Platform.isAndroid) {
         address = 'http://10.0.2.2:8080/api/wallpapers/random';
       } else if (Platform.isIOS) {
         address = 'http://127.0.0.1:8080/api/wallpapers/random';

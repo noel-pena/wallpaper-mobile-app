@@ -52,5 +52,5 @@ class WallpaperService(private val webClient: WebClient) {
             }
     }
 
-    private fun WallpaperData.toWallpaper(): WallpaperData = WallpaperData(path)
+    private fun WallpaperData.toWallpaper() = WallpaperData(path)
 }
